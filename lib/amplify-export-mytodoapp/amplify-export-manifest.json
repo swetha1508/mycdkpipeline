@@ -1,0 +1,38 @@
+{
+  "stackName": "amplify-mytodoapp-dev-182621",
+  "props": {
+    "templateFile": "root-stack-template.json",
+    "parameters": {
+      "AuthRoleName": "amplify-mytodoapp-dev-182621-authRole",
+      "UnauthRoleName": "amplify-mytodoapp-dev-182621-unauthRole",
+      "DeploymentBucketName": "amplify-mytodoapp-dev-182621-deployment"
+    },
+    "preserveLogicalIds": true,
+    "loadNestedStacks": {
+      "apimytodoapp": {
+        "templateFile": "api/mytodoapp/cloudformation-template.json",
+        "parameters": {
+          "AppSyncApiName": "mytodoapp",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-mytodoapp-dev-182621-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/db3a6dadb9a21c6ed3c12a262ee49755e4594311",
+          "env": "dev"
+        },
+        "preserveLogicalIds": true,
+        "loadNestedStacks": {
+          "CustomResourcesjson": {
+            "templateFile": "api/mytodoapp/amplify-appsync-files/stacks/CustomResources.json",
+            "preserveLogicalIds": true,
+            "loadNestedStacks": {}
+          },
+          "Todo": {
+            "templateFile": "api/mytodoapp/amplify-appsync-files/stacks/Todo.json",
+            "preserveLogicalIds": true,
+            "loadNestedStacks": {}
+          }
+        }
+      }
+    }
+  }
+}
