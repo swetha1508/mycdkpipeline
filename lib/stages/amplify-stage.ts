@@ -1,5 +1,6 @@
 import { CfnOutput, cfnTagToCloudFormation, Construct, Stage, StageProps } from '@aws-cdk/core';
 // IMPORT AMPLIFY EXPORTED BACKEND HERE
+import { AmplifyExportedBackend } from '@aws-amplify/cdk-exported-backend';
 import * as path from 'path'
 import * as cdk from '@aws-cdk/core'
 
